@@ -44,11 +44,13 @@ public class ProductRepository implements ProductRepoInterFace {
 	@Override
 	public Product getProductById(int id) {
 		try {
-			Product p = new Product();
+			Product p=null;
 			ResultSet product = stmnt.executeQuery("SELECT * FROM products WHERE productId = '" + id + "'");
 			
 			while (product.next()) {
+				System.out.println(product.getInt("productId"));
 				if(product.getInt("productId")!=0) {
+				p	= new Product();	
 				p.setProdutId(product.getInt("productId"));
 				p.setProductName(product.getString("productName"));
 				p.setQuantity(product.getInt("quantity"));

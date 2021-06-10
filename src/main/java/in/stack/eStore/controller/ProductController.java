@@ -7,12 +7,11 @@ import in.stack.eStore.service.ProductService;
 import in.stack.eStore.service.ProductServiceInterface;
 
 public class ProductController {
-	
+
 	static ProductController pc;
 	private Scanner scan = new Scanner(System.in);
-	ProductServiceInterface service = new ProductService();
+	private ProductServiceInterface service = new ProductService();
 
-	
 	// Get All product Details
 	public void getProduct() {
 
@@ -26,10 +25,10 @@ public class ProductController {
 	// Get Product By ID
 	public void getProductById(int id) {
 		Product productById = service.getProductById(id);
-		if(productById!=null)
+		if (productById != null)
 			System.out.println(productById.toString());
 		else
-			System.out.println("ID"+ id + " has no product");
+			System.out.println("ID  " + id + " has no product");
 
 	}
 
@@ -48,7 +47,7 @@ public class ProductController {
 		System.out.println(updatedProduct.toString());
 	}
 
-	// User InterFace Option 
+	// User InterFace Option
 	public void allFunctionalities() {
 
 		System.out.println("If You Want to See all products Press : 1");
@@ -58,23 +57,27 @@ public class ProductController {
 
 		int input = scan.nextInt();
 		switch (input) {
+		// If You Want to See all products
 		case 1:
 			pc.getProduct();
 			break;
+		// If You Want to See product by Id
 		case 2:
 			System.out.println("Enter Product Id");
 			int id = scan.nextInt();
 			pc.getProductById(id);
 			break;
+		// If You Want to Update Quantity ,Availablity Or Price of Product by Id
 		case 3:
 
 			System.out.println("Enter Product Id");
 			int pid = scan.nextInt();
-			if(service.getProductById(pid)!=null)
+			if (service.getProductById(pid) != null)
 				pc.updateProduct(service.getProductById(pid));
 			else
-				System.out.println("ID"+ pid + " has no product");
+				System.out.println("ID  " + pid + " has no product");
 			break;
+		// If You Want to add New product
 		case 4:
 			Product p = new Product();
 
@@ -89,7 +92,6 @@ public class ProductController {
 
 	}
 
-	
 	// Execution Starting Our Application
 	public static void main(String[] args) {
 		pc = new ProductController();

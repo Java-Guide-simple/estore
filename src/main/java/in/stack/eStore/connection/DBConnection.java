@@ -9,8 +9,9 @@ public class DBConnection {
 	private Connection con = null;
 	private Statement stmnt = null;
 
+	// DataBase Connection
 	public Statement getConnection() {
-
+		// establish the connection
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/eStore", "root", "test");
@@ -22,7 +23,7 @@ public class DBConnection {
 		}
 	}
 	
-	
+	// Close the connection
 	public void closeConnection() {
 		try {
 			stmnt.close();
@@ -32,3 +33,10 @@ public class DBConnection {
 		}
 	}
 }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// DataBase Query 
+/*create Database eStore
+use eStore;
+create table products(productId int,productName varchar(30),
+quantity int ,price double ,isactive boolean ,constraint pk primary key(productId));
+select * from products*/
