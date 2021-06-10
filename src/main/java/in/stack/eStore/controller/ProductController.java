@@ -19,15 +19,16 @@ public class ProductController {
 		for (Product product : allProducts) {
 			System.out.println(product);
 		}
-
+		allProducts.clear();
 	}
 
 	// Get Product By ID
 	public void getProductById(int id) {
 		Product productById = service.getProductById(id);
-		if (productById != null)
+		if (productById != null) {
 			System.out.println(productById.toString());
-		else
+			productById=null;
+		}else
 			System.out.println("ID  " + id + " has no product");
 
 	}
@@ -45,6 +46,7 @@ public class ProductController {
 		Product updatedProduct = service.updateProduct(p);
 		System.out.println("Updated Product Details is :");
 		System.out.println(updatedProduct.toString());
+		updatedProduct = null;
 	}
 
 	// User InterFace Option
